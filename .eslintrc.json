@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js", "./scripts/*.ts"]}],
+    "@typescript-eslint/quotes": "off",
+    "comma-dangle": "off",
+    "import/prefer-default-export": "off"
+  },
+  "extends": ["airbnb-typescript/base"],
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  }
+}
