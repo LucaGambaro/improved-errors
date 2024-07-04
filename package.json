@@ -1,6 +1,6 @@
 {
   "name": "improved-errors",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "main": "./dist/index.js",
   "types": "./dist/@types/index.d.ts",
   "keywords": ["errors", "improved errors", "Ierror", "better errors", "error diagnostic", "error tracking", "customizable error"],
