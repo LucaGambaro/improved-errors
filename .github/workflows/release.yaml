@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Specifica la versione di Node.js che desideri utilizzare
+          node-version: '16'  # Specifica la versione di Node.js che desideri utilizzare
 
       - name: Install dependencies
         run: npm install
