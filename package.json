@@ -1,24 +1,18 @@
 {
   "name": "improved-errors",
-  "version": "6.1.0",
+  "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/@types/index.d.ts",
   "scripts": {
-    "ts-compile": "rm -rf ./dist && tsc --project ./tsconfig.json",
+    "ts-compile": "tsc --project ./tsconfig.json",
     "lint": "eslint ./src --ext .ts",
     "format": "prettier --write \"./src/**/*.ts\" --loglevel warn",
     "check": "npm run ts-compile && npm run lint && npm run format",
-    "prepublishOnly": "npm run ts-compile",
-    "preversion": "npm run check && npm run atest",
-    "pretest": "npm run check"
-  },
-  "engines": {
-    "node": "18.x",
-    "npm": ">=9.8.x <11"
+    "test": "jest --config ./jest.config.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LucaGambaro/improved-errors.git" 
+    "url": "git+https://github.com/LucaGambaro/improved-errors.git"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
