@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/@types/index.d.ts",
+  "keywords": ["errors", "improved errors", "Ierror", "better errors", "error diagnostic", "error tracking", "customizable error"],
   "scripts": {
     "ts-compile": "tsc --project ./tsconfig.json",
     "lint": "eslint ./src --ext .ts",
