@@ -5,10 +5,10 @@
   "types": "./dist/@types/index.d.ts",
   "keywords": ["errors", "improved errors", "Ierror", "better errors", "error diagnostic", "error tracking", "customizable error"],
   "scripts": {
-    "ts-compile": "tsc --project ./tsconfig.json",
+    "build": "tsc --project ./tsconfig.json",
     "lint": "eslint ./src --ext .ts",
     "format": "prettier --write \"./src/**/*.ts\" --loglevel warn",
-    "check": "npm run ts-compile && npm run lint && npm run format",
+    "check": "npm run build && npm run lint && npm run format",
     "test": "jest --config ./jest.config.json"
   },
   "repository": {
