@@ -16,10 +16,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Specifica la versione di Node.js che desideri utilizzare
+          node-version: '14'  # Specifica la versione di Node.js che desideri utilizzare
 
       - name: Install dependencies
         run: npm install
+
+      - name: List files for debugging
+        run: ls -R src
+
+      - name: Compile TypeScript
+        run: tsc --project ./tsconfig.json
 
       - name: Run build
         run: npm run build  # Sostituisci con il comando npm che desideri eseguire
