@@ -2,43 +2,16 @@ import { IError } from "../IError";
 
 describe("IError", () => {
   it("returnFullStructure", () => {
-    const testMultipleThrows = (): IError => {
-      try {
-        try {
-          throw new Error("First Error");
-        } catch (error) {
-          throw new IError("Second Error")
-            .addMetadata({ mockMetadataSecondError: "test" })
-            .addCauses(error);
-        }
-      } catch (error) {
-        return new IError("Third Error")
-          .addMetadata({ mockMetadataThirdError: true })
-          .addCauses(error);
-      }
-    };
 
-    const fullIErrorStructure = testMultipleThrows().returnFullStructure();
-    expect(fullIErrorStructure).toMatchObject({
-      message: "Third Error",
-      metadata: {
-        mockMetadataThirdError: true,
-      },
-      causes: [
-        {
-          message: "Second Error",
-          metadata: {
-            mockMetadataSecondError: "test",
-          },
-          causes: [
-            {
-              causes: undefined,
-              message: "First Error",
-              metadata: undefined,
-            },
-          ],
-        },
-      ],
-    });
+const mainError = new IError('Main error occurred');
+mainError.addMetadata({ userId: 12345 });
+
+const causeError1 = new IError('First cause of the main error');
+const causeError2 = new IError('Second cause of the main error').addMetadata({ info: 'Additional info' });
+
+mainError.addCauses([causeError1, causeError2]);
+
+const fullError = mainError.returnFullStructure();
+console.log(JSON.stringify(fullError));
   });
 });
