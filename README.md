@@ -14,13 +14,13 @@ The `IError` package provides a structured way to handle errors in your applicat
 To install the `IError` package, use npm or yarn:
 
 ```bash
-npm install ierror-package
+npm install improved-errors
 ```
 
 or
 
 ```bash
-yarn add ierror-package
+yarn add improved-errors
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ yarn add ierror-package
 ### Importing the Package
 
 ```typescript
-import { IError } from "ierror-package";
+import { IError } from "improved-errors";
 ```
 
 ### Creating an Error Object
@@ -94,7 +94,7 @@ Example output:
 
 ### Usage Example
 ```typescript
-import { IError } from 'ierror-package';
+import { IError } from 'improved-errors';
 
 const mainError = new IError('Main error occurred');
 mainError.addMetadata({ userId: 12345 });
