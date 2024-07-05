@@ -1,22 +1,21 @@
 import winston from "winston";
 import DailyRotateFile from "winston-daily-rotate-file";
+import { generatePrintableString } from "./loggerPrintableString";
 
 const myFormat = winston.format.printf(
   ({ level, message, timestamp, causes, metadata, context }) => {
-    metadata;
-    return `[${level}] ${timestamp} ${context} - ${message}  ${JSON.stringify(
-      causes
-    )}`;
+    return generatePrintableString({
+      context,
+      timestamp,
+      level,
+      IErr: { message, metadata, causes },
+    });
   }
 );
 
 const logger = winston.createLogger({
   level: "info",
-  format: winston.format.combine(
-    winston.format.colorize({ message: true, all: true, level: true }),
-    winston.format.timestamp(),
-    myFormat
-  ),
+  format: winston.format.combine(winston.format.timestamp(), myFormat),
   transports: [
     new DailyRotateFile({
       filename: "__logs/error.log",

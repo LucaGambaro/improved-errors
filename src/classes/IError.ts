@@ -1,6 +1,6 @@
 import { IErrorFullStructure } from "../types/IError";
 import { unknownCauseToIError } from "../Utils/unknownCauseToIError";
-import { getLogger } from "./logger/winstonLogger";
+import { getLogger } from "./logger/winstonLoggerConfig";
 
 const logger = getLogger({ contextName: "IError" });
 
@@ -30,6 +30,9 @@ export class IError {
     switch (level) {
       case "warn":
         logger.warn(struct);
+        break;
+      case "err":
+        logger.error(struct);
         break;
       default:
         break;
