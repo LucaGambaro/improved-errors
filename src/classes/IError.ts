@@ -1,5 +1,8 @@
 import { IErrorFullStructure } from "../types/IError";
 import { unknownCauseToIError } from "../Utils/unknownCauseToIError";
+import { getLogger } from "./logger/winstonLogger";
+
+const logger = getLogger({ contextName: "IError" });
 
 export class IError {
   private message: string;
@@ -21,12 +24,27 @@ export class IError {
     return this;
   }
 
+  public log(level: "warn" | "info" | "err") {
+    const struct = this.returnFullStructure();
+
+    switch (level) {
+      case "warn":
+        logger.warn(struct);
+        break;
+      default:
+        break;
+    }
+  }
+
   public returnFullStructure(): IErrorFullStructure {
     const parsedCauses = this.causes.map((c) => c.returnFullStructure());
-    return {
+
+    const fullErrorStruct = {
       message: this.message,
       metadata: this.metadata,
       causes: this.causes.length ? parsedCauses : undefined,
     };
+
+    return fullErrorStruct;
   }
 }

@@ -3,7 +3,15 @@
   "version": "0.0.4",
   "main": "./dist/index.js",
   "types": "./dist/@types/index.d.ts",
-  "keywords": ["errors", "improved errors", "Ierror", "better errors", "error diagnostic", "error tracking", "customizable error"],
+  "keywords": [
+    "errors",
+    "improved errors",
+    "Ierror",
+    "better errors",
+    "error diagnostic",
+    "error tracking",
+    "customizable error"
+  ],
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
     "lint": "eslint ./src --ext .ts",
@@ -30,5 +38,9 @@
   "author": {
     "name": "Luca Gambaro"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  }
 }
