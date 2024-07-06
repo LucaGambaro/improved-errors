@@ -1,38 +1,13 @@
-import chalk, { Chalk } from "chalk";
+import chalk from "chalk";
+import { isValidLogLevel } from "../../Utils/typeGuards";
 import { IErrorFullStructure } from "../../types/IError";
+import {
+  LOG_LEVEL_COLOR,
+  LogStringBuilderParameters
+} from "../../types/IErrorLogger";
 import { IError } from "../IError";
 
-const DEFAULT_LOG_LEVELS = [
-  "error",
-  "warn",
-  "info",
-  "http",
-  "verbose",
-  "debug",
-  "silly",
-] as const;
-type DefaultLogLevel = (typeof DEFAULT_LOG_LEVELS)[number];
-
-const LOG_LEVEL_COLOR: Record<DefaultLogLevel, Chalk> = {
-  error: chalk.red,
-  warn: chalk.yellow,
-  info: chalk.blue,
-  http: chalk.green,
-  verbose: chalk.green,
-  debug: chalk.green,
-  silly: chalk.green,
-};
-
-function isValidLogLevel(level: string): level is DefaultLogLevel {
-  return DEFAULT_LOG_LEVELS.some((l) => l === level);
-}
-
-export function generatePrintableString(params: {
-  timestamp: string;
-  context: string;
-  level: string;
-  IErr: IErrorFullStructure;
-}) {
+export function logStringBuilder(params: LogStringBuilderParameters) {
   const { IErr, context, level, timestamp } = params;
 
   if (!isValidLogLevel(level)) {

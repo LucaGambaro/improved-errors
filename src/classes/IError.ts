@@ -1,8 +1,6 @@
 import { IErrorFullStructure } from "../types/IError";
 import { unknownCauseToIError } from "../Utils/unknownCauseToIError";
-import { getLogger } from "./logger/winstonLoggerConfig";
-
-const logger = getLogger({ contextName: "IError" });
+import { getBasicLogger } from "./logger/winstonLoggerConfig";
 
 export class IError {
   private message: string;
@@ -24,7 +22,8 @@ export class IError {
     return this;
   }
 
-  public log(level: "warn" | "info" | "err") {
+  public log(level: "warn" | "info" | "err", contextName?: string) {
+    const logger = getBasicLogger({ contextName });
     const struct = this.returnFullStructure();
 
     switch (level) {
